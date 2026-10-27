@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telco-churn"
+version = "0.2.0"
+description = "Churn, survival and Bayesian price-effect analysis for a subscription business"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "statsmodels>=0.14",
+    "matplotlib>=3.8",
+    "lifelines>=0.27",
+]
+
+[project.optional-dependencies]
+bayes = ["pymc>=5.10", "arviz>=0.17"]
+tracking = ["mlflow>=2.10"]
+dev = ["pytest>=8.0", "ruff>=0.6", "jupyter>=1.0", "nbconvert>=7.0"]
+all = [
+    "pymc>=5.10", "arviz>=0.17", "mlflow>=2.10",
+    "pytest>=8.0", "ruff>=0.6", "jupyter>=1.0", "nbconvert>=7.0",
+]
+
+[project.scripts]
+telco-score = "telco_churn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+# Notebooks are analysis prose; linting their cell-level style adds noise without
+# catching real defects. The library and scripts are linted in full.
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

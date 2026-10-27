@@ -1,0 +1,10 @@
+# Core runtime, pinned to the versions this project was built and tested with.
+# Install the package itself with `pip install -e .`; this file is for a fresh
+# environment that wants the exact numbers in the README.
+numpy==2.2.2
+pandas==2.2.3
+scikit-learn==1.8.0
+scipy==1.17.1
+statsmodels==0.14.6
+matplotlib==3.10.3
+lifelines==0.30.3

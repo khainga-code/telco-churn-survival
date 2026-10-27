@@ -1,0 +1,8 @@
+# Normalise line endings so the Makefile and shell steps work on Linux CI even
+# though this repository was authored on Windows.
+* text=auto eol=lf
+
+# Binary artefacts: never convert.
+*.joblib binary
+*.png binary
+*.ipynb text eol=lf

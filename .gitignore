@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.DS_Store
+
+# Raw data is downloaded at run time and hash-checked by telco_churn.data.
+# It is not redistributed here; see the README for the source.
+data/*.csv
+
+# MLflow is optional; the local store is not part of the repository.
+mlruns/
+mlflow.db
+
+# The fitted model and example queue ARE committed on purpose: scoring works
+# straight after a clone, and `make train` regenerates both.

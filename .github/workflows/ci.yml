@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Tests
+        run: pytest
+
+  pipeline:
+    name: train, score and execute notebooks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Download data
+        run: python scripts/download_data.py
+      - name: Train and save the model
+        run: python scripts/train_baselines.py
+      - name: Score a contact queue
+        run: python scripts/score.py --capacity 100
+      - name: Execute notebooks (01, 02, 03, 05, 06)
+        run: |
+          python -m nbconvert --to notebook --execute --inplace notebooks/01_framing_and_eda.ipynb
+          python -m nbconvert --to notebook --execute --inplace notebooks/02_models_calibration_value.ipynb
+          python -m nbconvert --to notebook --execute --inplace notebooks/03_survival_analysis.ipynb
+          python -m nbconvert --to notebook --execute --inplace notebooks/05_experiment_design.ipynb
+          python -m nbconvert --to notebook --execute --inplace notebooks/06_monitoring.ipynb
