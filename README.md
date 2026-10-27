@@ -41,7 +41,7 @@ is part of the result.
    model comparison with intervals, calibration, decision curve, value queue.
 3. [`notebooks/04_bayesian_price_effect.ipynb`](notebooks/04_bayesian_price_effect.ipynb) -
    the sign flip, the collinearity that causes it, and the sensitivity analysis.
-4. [`src/telco_churn/evaluate.py`](src/telco_churn/evaluate.py) - the oracle/expec-ted
+4. [`src/telco_churn/evaluate.py`](src/telco_churn/evaluate.py) - the oracle/expected
    value distinction and the bootstrap helpers.
 5. [`reports/results.json`](reports/results.json) - every headline number, machine-readable.
 

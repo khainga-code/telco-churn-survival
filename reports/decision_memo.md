@@ -18,7 +18,7 @@
    sign is not identified from observational data.
 3. **Size the pilot properly.** 1,494 customers per arm detects a 5pp reduction at
    80% power. If whole agent areas are randomised, plan for about 3,242 per arm
-   (82 areas at 40 customers each, ICC 0.03).
+   (82 areas at roughly 40 customers each, ICC 0.03).
 
 ## The three numbers that matter
 
