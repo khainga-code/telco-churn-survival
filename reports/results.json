@@ -1,0 +1,153 @@
+{
+  "dataset": {
+    "customers": 7043,
+    "churn_rate": 0.2653698707936959,
+    "train_rows": 5634,
+    "test_rows": 1409
+  },
+  "economics": {
+    "value_saved": 300.0,
+    "contact_cost": 10.0,
+    "save_rate": 0.3
+  },
+  "breakeven_probability": 0.1111111111111111,
+  "models": {
+    "logistic_regression": {
+      "cv": {
+        "roc_auc": 0.8313300112075285,
+        "pr_auc": 0.6065989245989746,
+        "brier": 0.14177824059403835,
+        "log_loss": 0.43179147043812943
+      },
+      "test": {
+        "roc_auc": 0.8176754759874963,
+        "pr_auc": 0.5707898852644562,
+        "brier": 0.14787869918923272,
+        "log_loss": 0.4450944980782577
+      },
+      "test_ci": {
+        "roc_auc": {
+          "estimate": 0.8176754759874963,
+          "lo": 0.7942511299823841,
+          "hi": 0.8404080386728406,
+          "n_boot": 1000
+        },
+        "brier": {
+          "estimate": 0.14787869918923272,
+          "lo": 0.1368120976042605,
+          "hi": 0.15823528215112617,
+          "n_boot": 1000
+        }
+      },
+      "capture_top20": {
+        "top_frac": 0.2,
+        "captured_share": 0.4572192513368984,
+        "precision": 0.6063829787234043,
+        "base_rate": 0.2654364797728886,
+        "lo": 0.4139085184425178,
+        "hi": 0.49933473389355737
+      },
+      "calibration": {
+        "slope": 0.9186842700903067,
+        "intercept": -0.053291566708666645
+      }
+    },
+    "hist_gradient_boosting": {
+      "cv": {
+        "roc_auc": 0.8257360243252656,
+        "pr_auc": 0.5891929569040846,
+        "brier": 0.1439081788025416,
+        "log_loss": 0.43719909115100913
+      },
+      "test": {
+        "roc_auc": 0.8126714717507556,
+        "pr_auc": 0.571811231002286,
+        "brier": 0.1495260424652128,
+        "log_loss": 0.45001382975442755
+      },
+      "test_ci": {
+        "roc_auc": {
+          "estimate": 0.8126714717507556,
+          "lo": 0.7884902173342564,
+          "hi": 0.8356570310062151,
+          "n_boot": 1000
+        },
+        "brier": {
+          "estimate": 0.1495260424652128,
+          "lo": 0.138702561283193,
+          "hi": 0.15988686292104645,
+          "n_boot": 1000
+        }
+      },
+      "capture_top20": {
+        "top_frac": 0.2,
+        "captured_share": 0.45454545454545453,
+        "precision": 0.6028368794326241,
+        "base_rate": 0.2654364797728886,
+        "lo": 0.4106505284204513,
+        "hi": 0.491203560371517
+      },
+      "calibration": {
+        "slope": 0.8805817539368783,
+        "intercept": -0.06732679557466904
+      }
+    }
+  },
+  "paired_delta_auc": {
+    "delta": 0.0050040042367407445,
+    "lo": -0.0012208321683757238,
+    "hi": 0.010667482256948845,
+    "includes_zero": true,
+    "n_boot": 1000
+  },
+  "decision": {
+    "selected_model": "logistic_regression",
+    "threshold_from_oof": 0.10999999999999999,
+    "contacted": 884,
+    "expected_net_value": 23036.49364488285,
+    "expected_saves": 106.25497881627615,
+    "realised_net_value_on_test": 22840.0,
+    "oracle_best_threshold": 0.09,
+    "oracle_best_net_value": 23009.999999999996,
+    "treat_all_expected_net_value": 19646.42559319491,
+    "threshold_band_2pct": [
+      0.06,
+      0.16999999999999998
+    ],
+    "capture_top20": {
+      "top_frac": 0.2,
+      "captured_share": 0.4572192513368984,
+      "precision": 0.6063829787234043,
+      "base_rate": 0.2654364797728886,
+      "lo": 0.4139085184425178,
+      "hi": 0.49933473389355737
+    }
+  },
+  "economics_sensitivity": {
+    "base": {
+      "breakeven_probability": 0.1111111111111111,
+      "contacted": 884,
+      "share_contacted": 0.6273953158268275,
+      "expected_net_value": 23036.49364488285
+    },
+    "contact_cost_doubled": {
+      "breakeven_probability": 0.2222222222222222,
+      "contacted": 650,
+      "share_contacted": 0.46132008516678497,
+      "expected_net_value": 15467.612595902025
+    },
+    "save_rate_halved": {
+      "breakeven_probability": 0.2222222222222222,
+      "contacted": 650,
+      "share_contacted": 0.46132008516678497,
+      "expected_net_value": 7733.806297951012
+    },
+    "value_saved_halved": {
+      "breakeven_probability": 0.2222222222222222,
+      "contacted": 650,
+      "share_contacted": 0.46132008516678497,
+      "expected_net_value": 7733.806297951012
+    }
+  },
+  "artefact": "models\\churn_logistic.joblib"
+}
