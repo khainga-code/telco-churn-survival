@@ -132,14 +132,14 @@ src/telco_churn/
   cli.py         `telco-score` entry point
 scripts/         download, train, score
 notebooks/       six executed notebooks
-tests/           40 unit tests
+tests/           42 unit tests
 reports/         figures, results.json, decision memo, example contact queue
 models/          fitted pipeline + metadata
 ```
 
 ## Tests and CI
 
-- 40 unit tests covering evaluation, calibration, targeting, drift, schema
+- 42 unit tests covering evaluation, calibration, targeting, drift, schema
   validation, feature leakage and model persistence.
 - `ruff` for linting.
 - GitHub Actions runs the test suite on Python 3.10 and 3.12, trains the model,
