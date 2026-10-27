@@ -1,6 +1,6 @@
 # Churn, survival and price effects for a subscription business
 
-[![ci](https://github.com/Khainga-code/telco-churn-survival/actions/workflows/ci.yml/badge.svg)](https://github.com/Khainga-code/telco-churn-survival/actions/workflows/ci.yml)
+[![ci](https://github.com/khainga-code/telco-churn-survival/actions/workflows/ci.yml/badge.svg)](https://github.com/khainga-code/telco-churn-survival/actions/workflows/ci.yml)
 
 **Business question:** which customers will leave early enough to act on, when do
 they leave, who is worth contacting, and what would a price change do?
